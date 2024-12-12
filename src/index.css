@@ -12,5 +12,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   outline: none;
+  transition: 0.2s ease-in-out;
 
 }

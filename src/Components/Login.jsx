@@ -18,19 +18,19 @@ const Login = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     console.log(formData);
-
-    try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_BaseURL}api/checkUser`,
-        formData
-      );
-      notification("success", response.data.message, 2000);
-      setTimeout(() => {
-        navigate("/dashboard");
-      }, 3000);
-    } catch (error) {
-      notification("error", error.response.data.message);
-    }
+console.log(process.env.REACT_APP_BaseURL);
+try {
+  const response = await axios.post(
+    `${process.env.REACT_APP_BaseURL}api/checkUser`,
+    formData
+  );
+  notification("success", response.data.message, 2000);
+  setTimeout(() => {
+    navigate("/UserDashboard");
+  }, 3000);
+} catch (error) {
+  notification("error", error.response.data.message);
+} 
   };
   return (
     <div className="w-full h-full bg-base-200 flex flex-col justify-center items-center ">
