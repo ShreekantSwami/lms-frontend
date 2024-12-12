@@ -21,7 +21,7 @@ const UserRegister = () => {
     console.log(formData);
     try {
       const data = await axios.post(
-        "http://localhost:1402/api/saveUser",
+        `https://lms-backend-46ai.onrender.com/api/saveUser`,
         formData
       );
       notification("success", "Data saved successfully");
