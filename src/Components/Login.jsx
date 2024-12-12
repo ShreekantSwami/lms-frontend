@@ -24,6 +24,7 @@ try {
     `${process.env.REACT_APP_BaseURL}api/checkUser`,
     formData
   );
+  localStorage.setItem("tutorId", response.data.checkUser._id);
   notification("success", response.data.message, 2000);
   setTimeout(() => {
     navigate("/UserDashboard");

@@ -20,7 +20,7 @@ const UserRegister = () => {
     e.preventDefault();
     console.log(formData);
     try {
-      const data = await axios.post(
+      await axios.post(
         `${process.env.REACT_APP_BaseURL}api/saveUser`,
         formData
       );

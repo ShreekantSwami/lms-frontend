@@ -5,6 +5,13 @@ import UserRegister from "./Components/UserComponents/UserRegister";
 import ForgotPassword from "./Components/ForgotPassword";
 import UserDashboard from "./Components/UserComponents/UserDashboard";
 import UserLogout from "./Components/UserComponents/UserLogout";
+import Admin from "./Admin/Admin";
+import AdminProfile from "./Admin/AdminProfile";
+import AdminHome from "./Admin/AdminHome";
+import Tutor from "./Components/Tutor/Tutor";
+import TutorHome from "./Components/Tutor/TutorHome";
+import TutorProfile from "./Components/Tutor/TutorProfile";
+import CreateCourse from "./Components/Tutor/CreateCourse";
 const App = () => {
   return (
     <BrowserRouter>
@@ -14,6 +21,15 @@ const App = () => {
         <Route path="/forgotPassword" element={<ForgotPassword />} />
         <Route path="/UserDashboard" element={<UserDashboard />} />
         <Route path="/UserLogout" element={<UserLogout />} />
+        <Route path="/Admin" element={<Admin />}>
+          <Route index element={<AdminHome />} />
+          <Route path="AdminProfile" element={<AdminProfile />} />
+        </Route>
+        <Route path="/Tutor" element={<Tutor />}>
+          <Route index element={<TutorHome />} />
+          <Route path="TutorProfile" element={<TutorProfile />} />
+          <Route path="CreateCourse" element={<CreateCourse />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
