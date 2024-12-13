@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import Button from "../Accessibility/Button";
+import { useNavigate } from "react-router-dom";
 
 const CreateCourse = () => {
+  const navigate = useNavigate();
+  const isAuthenticated = localStorage.getItem("isAuthenticated");
+  if (isAuthenticated === "false") {
+    navigate("/");
+  }
+
   const [videoData, setVideoData] = useState({
     title: "",
     description: "",

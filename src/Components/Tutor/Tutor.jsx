@@ -1,8 +1,14 @@
 import React from "react";
 import UserNavbar from "../UserComponents/UserNavbar";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 const Tutor = () => {
+  const navigate = useNavigate();
+  const isAuthenticated = localStorage.getItem("isAuthenticated");
+  if (isAuthenticated === "false") {
+    navigate("/");
+  }
+
   return (
     <div className="w-full h-screen flex flex-col ">
       <div className="w-full h-[8%] ">

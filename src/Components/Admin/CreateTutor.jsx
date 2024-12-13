@@ -1,17 +1,24 @@
-import React, { useState } from "react";
 import axios from "axios";
-import UserNavbar from "./UserNavbar";
+import React, { useState } from "react";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import notification from "../Helper/notification";
+import UserNavbar from "../UserComponents/UserNavbar";
 import Button from "../Accessibility/Button";
-const UserRegister = () => {
+import notification from "../Helper/notification";
+import { useNavigate } from "react-router-dom";
+
+const CreateTutor = () => {
+  const navigate = useNavigate();
+  const isAuthenticated = localStorage.getItem("isAuthenticated");
+  if (isAuthenticated === "false") {
+    navigate("/");
+  }
+
   const [formData, setFormData] = useState({
     fname: "",
     lname: "",
     email: "",
     password: "",
-    role: "User",
+    role: "Tutor",
   });
   const changeHandler = (e) => {
     const { name, value } = e.target;
@@ -22,7 +29,7 @@ const UserRegister = () => {
     console.log(formData);
     try {
       await axios.post(
-        `${process.env.REACT_APP_BaseURL}api/saveUser`,
+        `${process.env.REACT_APP_BaseURL}api/saveTutor`,
         formData
       );
       notification("success", "Data saved successfully");
@@ -44,13 +51,10 @@ const UserRegister = () => {
         pauseOnHover
         theme="colored"
       />
-      <div className="w-full h-[10%]">
-        <UserNavbar login="true" />
-      </div>{" "}
-      <div className="w-full h-[90%] flex justify-center items-center">
+      <div className="w-full h-full flex justify-center items-center">
         <div className="w-[30%] h-fit  bg-base-100 p-10 rounded-xl shadow-xl">
           <h1 className="w-full text-6xl font-secondFont text-center">
-            User Registration
+            Tutor Registration
           </h1>
           <br />
           <form
@@ -105,17 +109,7 @@ const UserRegister = () => {
                 required
               />
             </label>
-            <label className="flex flex-col text-lg ">
-              Confirm password:
-              <input
-                onChange={changeHandler}
-                className=" input  input-bordered border-2 px-3 py-2 rounded-lg placeholder:text-sm font-normal focus:ring-2 ring-purple-400"
-                placeholder="Re-enter your password "
-                type="password"
-                name="confirmPassword"
-                required
-              />
-            </label>
+
             <br />
             {/* <button className="btn text-white bg-purple-400">Submit</button> */}
             <Button
@@ -129,4 +123,4 @@ const UserRegister = () => {
   );
 };
 
-export default UserRegister;
+export default CreateTutor;

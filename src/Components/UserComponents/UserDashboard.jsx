@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import UserNavbar from "./UserNavbar";
+import { useNavigate } from "react-router-dom";
 
 const UserDashboard = () => {
+  const navigate = useNavigate();
+  const isAuthenticated = localStorage.getItem("isAuthenticated");
+  useEffect(() => {
+    if (isAuthenticated === "false") {
+      navigate("/");
+    }
+  }, []);
+
   return (
     <div className="w-full h-full flex flex-col bg-base-200">
       <div className="w-full h-[10%]">

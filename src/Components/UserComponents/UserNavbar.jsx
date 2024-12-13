@@ -117,7 +117,6 @@ const UserNavbar = (props) => {
           )}
           {`${props.login}` === "admin" && (
             <div className="flex justify-center items-center  ">
-              <Button text="Create Course" className="btn-ghost"></Button>
               <div className="dropdown dropdown-end">
                 <div
                   tabIndex={0}
@@ -137,14 +136,9 @@ const UserNavbar = (props) => {
                   <li>
                     <Link to="/Admin/AdminProfile">Profile</Link>
                   </li>
+
                   <li>
-                    <Link to="/Admin">My Dashboard</Link>
-                  </li>
-                  <li>
-                    <Link>My Courses</Link>
-                  </li>
-                  <li>
-                    <Link to="/UserLogout">Logout</Link>
+                    <Link>Settings</Link>
                   </li>
                 </ul>
               </div>

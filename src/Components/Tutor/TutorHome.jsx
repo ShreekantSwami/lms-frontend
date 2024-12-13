@@ -1,8 +1,13 @@
 import React from "react";
-import Button from "../Accessibility/Button";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const TutorHome = () => {
+  const navigate = useNavigate();
+  const isAuthenticated = localStorage.getItem("isAuthenticated");
+  if (isAuthenticated === "false") {
+    navigate("/");
+  }
+
   return (
     <>
       {/* <div className="w-1/6 h-full bg-base-100 flex flex-col space-y-5 gap-2 p-5">

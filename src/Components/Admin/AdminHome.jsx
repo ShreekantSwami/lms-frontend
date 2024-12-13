@@ -1,10 +1,16 @@
 import React from "react";
-import Button from "../Components/Accessibility/Button";
+import { useNavigate } from "react-router-dom";
 
 const AdminHome = () => {
+  const navigate = useNavigate();
+  const isAuthenticated = localStorage.getItem("isAuthenticated");
+  if (isAuthenticated === "false") {
+    navigate("/");
+  }
+
   return (
     <>
-      <div className="w-1/6 h-full bg-base-100 flex flex-col space-y-5 gap-2 p-5">
+      {/* <div className="w-1/6 h-full bg-base-100 flex flex-col space-y-5 gap-2 p-5">
         <button className="btn bg-base-200/80 text-xl text-purple-500">
           Create Course
           <span className="text-purple-700">
@@ -24,8 +30,8 @@ const AdminHome = () => {
         <Button text="Dashboard" className="btn-ghost bg-base-200/90"></Button>
         <Button text="My Courses" className="btn-ghost bg-base-200/90"></Button>
         <Button text="Settings" className="btn-ghost bg-base-200/90"></Button>
-      </div>
-      <div className="w-5/6 h-full bg-base-200/50 py-5 px-10 flex flex-col  ">
+      </div> */}
+      <div className="w-full h-full bg-base-200/50 py-5 px-10 flex flex-col  ">
         {/* Dashboard */}
         {/* Top portion */}
         <div className="w-full h-[10%] flex flex-col justify-center gap-2">
@@ -132,7 +138,7 @@ const AdminHome = () => {
               <div class="w-full max-w-sm min-w-[200px] relative">
                 <div class="relative">
                   <input
-                    class=" w-full pr-11 h-10 pl-3 py-2 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-400 shadow-sm focus:shadow-md"
+                    class=" w-full pr-11 h-10 pl-3 py-2 bg-white placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-400 shadow-sm focus:shadow-md"
                     placeholder="Search for invoice..."
                   />
                   <button
