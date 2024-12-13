@@ -6,8 +6,8 @@ import UserNavbar from "./UserComponents/UserNavbar";
 import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
-const isAuthenticated = false;
-localStorage.setItem("isAuthenticated", isAuthenticated);
+const isAuthenticated = "false";
+localStorage.setItem("isAuthenticated", "false");
 
 const navigate = useNavigate();
 const [formData, setFormData] = useState({
@@ -28,7 +28,7 @@ const submitHandler = async (e) => {
       formData
     );
     localStorage.setItem("tutorId", response.data.checkUser._id);
-    localStorage.setItem("isAuthenticated", !isAuthenticated);
+    localStorage.setItem("isAuthenticated", "true");
 
     notification("success", response.data.message, 2000);
 

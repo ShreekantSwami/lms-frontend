@@ -1,30 +1,36 @@
 import React, { useState, useEffect } from "react";
 import UserNavbar from "../UserComponents/UserNavbar";
-import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
+import {
+  Link,
+  Outlet,
+  replace,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import Button from "../Accessibility/Button";
 import "./Admin.css"; // Import the CSS file for transitions
 
 const Admin = () => {
-  const navigate = useNavigate();
-  const isAuthenticated = localStorage.getItem("isAuthenticated");
   const [animationClass, setAnimationClass] = useState("");
-  const location = useLocation(); // Detect route changes
+  const navigate = useNavigate();
+
+  console.log(localStorage.getItem("tutorId"));
 
   useEffect(() => {
-    // Redirect to login if not authenticated
-    if (!isAuthenticated) {
-      navigate("/");
-    }
-  }, [isAuthenticated, navigate]);
+    localStorage.getItem("isAuthenticated") === "false"
+      ? navigate("/", { replace: true })
+      : setAnimationClass("zoom-out");
+  }, []);
+  // if (
+  //   localStorage.getItem("isAuthenticated") &&
+  //   localStorage.getItem("isAuthenticated") === "false"
+  // ) {
+  //   localStorage.setItem("isAuthenticated", "false");
+  //   navigate("/", { replace: true });
+  //   return null;
+  // }
 
-  useEffect(() => {
-    // Trigger animation on route change
-    setAnimationClass("zoom-out");
-    const timer = setTimeout(() => setAnimationClass(""), 500); // Remove class after animation
-    return () => clearTimeout(timer);
-  }, [location]);
-
-  return isAuthenticated === "true" ? (
+  return (
     <div className="w-full h-screen flex flex-col">
       <div className="w-full h-[8%]">
         <UserNavbar login="admin" />
@@ -85,7 +91,7 @@ const Admin = () => {
         </div>
       </div>
     </div>
-  ) : null;
+  );
 };
 
 export default Admin;
