@@ -160,7 +160,7 @@ const UserDashboard = () => {
                 <>
                   {console.log("Getting data", fetchMyCourses)}
                   {fetchMyCourses.map((course) => (
-                    <div className="card h-fit rounded-2xl card-compact w-80 m-5  bg-base-100 shadow-xl opacity-70 hover:opacity-100 hover:scale-[1.01]">
+                    <div className="card max-h-[400px] rounded-2xl card-compact w-80 m-5  bg-base-100 shadow-xl opacity-70 hover:opacity-100 hover:scale-[1.01]">
                       <figure>
                         <video src={`${course.videoUrl}`} className="" />
                       </figure>
@@ -191,20 +191,20 @@ const UserDashboard = () => {
                           </button>
                           <dialog
                             id="my_modal_3"
-                            className="modal w-screen h-screen"
+                            className="modal w-screen h-screen bg-black/90"
                           >
-                            <div className="bg-white min-w-1/2 min-h-1/2 relative">
+                            <div className="bg-white w-2/3 h-3/3 relative rounded-2xl shadow-2xl overflow-hidden">
                               <form
                                 method="dialog"
                                 className="p-10 w-full h-full absolute "
                               >
                                 {/* if there is a button in form, it will close the modal */}
-                                <button className="btn btn-sm btn-circle btn-ghost absolute right-0 top-2 text-white z-10">
+                                <button className="btn btn-sm btn-circle btn-outline absolute right-4 top-4 text-white text-2xl z-10  flex justify-center items-center">
                                   ✕
                                 </button>
                               </form>
                               <video
-                                className="w-full h-full"
+                                className="w-full h-fit rounded-2zl"
                                 src={VideoUrl}
                                 controls
                                 muted
