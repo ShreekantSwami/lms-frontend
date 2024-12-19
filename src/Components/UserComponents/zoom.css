@@ -1,0 +1,5 @@
+.zoom-in {
+    animation-duration: 2s;
+  transform: scale(1.5); /* Zoom factor */
+  background-color: #2e7d32; /* Optional style change */
+}
