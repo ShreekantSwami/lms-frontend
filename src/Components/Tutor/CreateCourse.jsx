@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import Button from "../Accessibility/Button";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
+import notification from "../Helper/notification";
 const CreateCourse = () => {
   const [duration, setDuration] = useState(null);
   const videoRef = useRef(null);
@@ -48,6 +48,9 @@ const CreateCourse = () => {
       videoData
     );
     console.log(response);
+    if (response) {
+      notification("success", "Course created successfully");
+    }
   };
 
   return (
